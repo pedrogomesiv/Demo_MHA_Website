@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MHA Volunteering</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/posts.js"></script>
+    <script src="/js/js-url-2.5.0/url.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>admin registration</title>
+    <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+</head>
+
+<body>
+    <div th:fragment="content">
+        <h4 class="card-title">Change Business Email</h4>
+        <form action="/admin/change_business_info/change_email" method="get" class="forms-sample">
+            <div class="form-group">
+                <label > Business Name</label>
+                <select class="form-control" name="business">
+                    <option th:each="business : ${businesses}" th:value="${business.Bname}" th:text="${business.Bname}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Business Email</label>
+                <input type="text" name="email"  value="Enter Email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label >Confirm Business Email</label>
+                <input type="text" name="email2"  value="Confirm Email"  class="form-control">
+            </div>
+
+            <input type="submit" class="btn btn-success mr-2" name="changedetals" id="submit">
+        </form>
+        <br>
+        <div th:unless="${attribute2.isEmpty()}">
+            <div class="alert alert-danger" th:text="${attribute2}"></div>
+        </div>
+
+        <div th:unless="${attribute1.isEmpty()}">
+            <div class="alert alert-success" th:text="${attribute1}"></div>
+        </div>
+        <br>
+        <h4 class="card-title">Change Business Name</h4>
+        <form action="/admin/change_business_info/change_name" method="get" class="forms-sample">
+            <div class="form-group">
+                <label > Business Name</label>
+                <select class="form-control" name="business">
+                    <option th:each="business : ${businesses}" th:value="${business.Bname}" th:text="${business.Bname}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Business name</label>
+                <input type="text" name="name"  value="Enter Name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label >Confirm Business Name</label>
+                <input type="text" name="name2"  value="Confirm Name"  class="form-control">
+            </div>
+
+            <input type="submit" class="btn btn-success mr-2" name="changedetals" id="submit">
+        </form>
+        <br>
+        <div th:unless="${attribute4.isEmpty()}">
+            <div class="alert alert-danger" th:text="${attribute4}"></div>
+        </div>
+
+        <div th:unless="${attribute3.isEmpty()}">
+            <div class="alert alert-success" th:text="${attribute3}"></div>
+        </div>
+    </div>
+</body>
+</html>

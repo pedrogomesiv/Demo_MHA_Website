@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/faces/one.jpg" />
+</head>
+
+<body>
+<div class="container-scroller">
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+            <a class="navbar-brand brand-logo" href="/">
+                <img src="images/two.jpg" alt="logo" />
+            </a>
+            <a class="navbar-brand brand-logo-mini" href="/">
+                <img src="images/faces/one.jpg" alt="logo" />
+            </a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+            <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+            </ul>
+            <ul class="navbar-nav navbar-nav-right">
+
+                <li class="nav-item dropdown d-none d-xl-inline-block">
+                    <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                        <span class="profile-text">Welcome, Henry</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                        <a href="/profile/details" class="dropdown-item mt-2">
+                            Manage Account
+                        </a>
+                        <a href="/logout" class="dropdown-item">
+                            Sign Out
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <span class="mdi mdi-menu"></span>
+            </button>
+        </div>
+    </nav>
+    <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item nav-profile">
+                    <div class="nav-link">
+                        <div class="user-wrapper">
+                            <div class="profile-image">
+                                <img src="images/faces/one.jpg" alt="profile image">
+                            </div>
+                            <div class="text-wrapper">
+                                <p class="profile-name">Henry</p>
+                                <div>
+                                    <small class="designation text-muted">Volunteer</small>
+                                    <span class="status-indicator online"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">
+                        <i class="menu-icon mdi mdi-bank"></i>
+                        <span class="menu-title">Your Time Bank </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/offers">
+                        <i class="menu-icon mdi mdi-television"></i>
+                        <span class="menu-title">View Rewards </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile/credithistory">
+                        <i class="menu-icon mdi mdi-plus"></i>
+                        <span class="menu-title">View Credit History </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">These Are All The Business On Board </h4>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Business Name</th>
+                                        <th>Business Emial</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="business : ${Business}">
+                                        <td th:text="${Business.businessName}"></td>
+                                        <td th:text="${Bsuiness.businessEmail}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<script src="vendors/js/vendor.bundle.base.js"></script>
+<script src="vendors/js/vendor.bundle.addons.js"></script>
+<script src="js/off-canvas.js"></script>
+<script src="js/misc.js"></script>
+</body>
+</html>

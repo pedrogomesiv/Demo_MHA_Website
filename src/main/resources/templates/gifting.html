@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sending Gift</title>
+</head>
+<body>
+<div th:fragment="content">
+    <form th:action="@{/profile/gift/{oid}(oid=${id})}" method="post"  class="forms-sample"><br>
+        <label>Name of Recipient</label><input type="text" name="name" class="form-control"/><br>
+        <label>Email address of Recipient</label><input type="text" name="email1" class="form-control"/><br>
+        <label>Confirm email</label><input type="text" name="email2" class="form-control"/><br>
+        <label>Gift message (optional)</label><input type="text" name="message" class="form-control"/><br>
+        <input type="submit" name="redeem" value="Redeem" class="btn btn-success mr-2"/>
+    </form>
+    <span th:text="${success}"></span>
+</div>
+</body>
+</html>

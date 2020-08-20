@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star Admin Free Bootstrap-4 Admin Dashboard Template</title>
+    <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.png" />
+</head>
+
+<body>
+    <div th:fragment="content">
+        <h4 class="card-title">Pay credits</h4>
+        <form th:action="@{/admin/pay/{uid}(uid=${user_id})}" method="post">
+            <div><label>Credit pay amount: </label><input name="amount" type="number" class="form-control"></div>
+            <div class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="gt" type="radio" class="form-check-input"  value="give" checked> Give
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="gt" type="radio" class="form-check-input"  value="take"> Take
+                    </label>
+                </div>
+            </div>
+            <div><label>Reason for credits: </label><input name="reason" type="text" class="form-control"></div>
+            <br>
+            <input type="submit" value="Submit" class="btn btn-success mr-2">
+        </form>
+        <div th:if="${not resultpaybad.isEmpty()}">
+            <div class="alert alert-danger" th:text="${resultpaybad}"></div>
+        </div>
+
+        <div th:if="${not resultpaygood.isEmpty()}">
+            <div class="alert alert-success" th:text="${resultpaygood}"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+

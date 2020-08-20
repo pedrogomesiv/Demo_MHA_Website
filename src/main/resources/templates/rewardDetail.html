@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+<div th:fragment="content">
+    <div id=charityInfo th:if="${offer}">
+            <h4 th:text="${offer.name}"></h4>
+            <br>
+            <p th:text="${offer.description}"></p>
+            <br>
+            <p th:text="'Cost: ' + ${offer.cost} + ' credits'"></p>
+            <br>
+        <form th:action="@{/profile/reward_redeem/{oid}(oid=${offer.id})}" method="post">
+            <input type="submit" name="redeem" value="Redeem" class="btn btn-success mr-2"/>
+        </form>
+        <span th:text="${success}"></span>
+        <br>
+        <form th:action="@{/profile/gift/{oid}(oid=${offer.id})}">
+            <input type="submit" value="Gift" class="btn btn-success mr-2"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

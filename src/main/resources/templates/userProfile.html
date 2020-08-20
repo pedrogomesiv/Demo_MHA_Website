@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/faces/one.jpg" />
+</head>
+
+<body>
+    <div th:fragment="content">
+    <h4 class="card-title">Your Time Points </h4>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    Current balance
+                </th>
+                <th>
+                    Total Amount
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="users : ${user}">
+                <td th:text="${users.current_balance}"></td>
+                <td th:text="${users.total_amount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <h4>Your Achievements </h4>
+    <div th:each="achievement : ${achievements}">
+        <h5 th:text="${achievement.name}"></h5>
+        <p th:text="'Achievement earned: '+${#dates.format(achievement.date, 'dd-MMM-yyyy')}"></p>
+        <div class="table-responsive">
+            <table class="table table-striped" style="table-layout: fixed">
+                <td style="width: 25%"><img th:src="@{/images/{img_path}(img_path = ${achievement.image})}" style="width: 190px; height: 165px; border-radius: unset;"/></td>
+                <td th:text="${achievement.description}" style="white-space: unset; padding-left: 50px"></td>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
+

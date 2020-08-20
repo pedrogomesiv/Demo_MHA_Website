@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Volunteer Search Result</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/js-url-2.5.0/url.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Results</title>
+    <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+</head>
+
+<body>
+    <div th:fragment="content">
+    <h4 class="card-title">Applicants</h4>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col">Volunteer Applicant's ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">MHA Tenant</th>
+                <th scope="col">Previous Volunteer</th>
+                <th scope="col">Condition/s? And Details</th>
+                <th scope="col">Medication/s? And Details</th>
+                <th scope="col">Allergy/ies? And Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="a : ${apps}">
+                <td>
+                    <!--Referencing: https://stackoverflow.com/questions/38776883/implement-a-button-in-a-table-that-returns-data-from-the-table-using-thymeleaf-a-->
+                    <form th:action="@{/applicant/accept/{id}(id=${a.volunteerapplicantid})}" th:method="get">
+                        <button type="submit" id="submitAccept" class="btn btn-primary submit-btn btn-block">Accept</button>
+                        <!--https://www.thymeleaf.org/doc/articles/standardurlsyntax.html-->
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/applicant/decline/{id}(id=${a.volunteerapplicantid})}" th:method="get">
+                        <button type="submit" id="submitDecline"  class="btn btn-danger submit-btn btn-block">Decline</button>
+                    </form>
+                </td>
+                <td th:text="${a.volunteerapplicantid}"></td>
+                <td th:text="${a.firstName + ' ' + a.lastName}"></td>
+                <td th:text="${a.username}"></td>
+                <td th:text="${a.address_line_one + a.address_line_two + ', ' + a.city + ', ' + a.postcode}"></td>
+                <td th:text="${a.mha_tennant}"></td>
+                <td th:text="${a.previous_volunteer}"></td>
+                <td th:text="${a.conditions + ', ' + a.condition_details}"></td>
+                <td th:text="${a.medication + ', ' + a.medication_details}"></td>
+                <td th:text="${a.allergies + ', ' + a.allergy_details}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="/vendors/js/vendor.bundle.base.js"></script>
+<script src="/vendors/js/vendor.bundle.addons.js"></script>
+<script src="/js/off-canvas.js"></script>
+<script src="/js/misc.js"></script>
+</body>
+</html>

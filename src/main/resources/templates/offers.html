@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/faces/one.jpg" />
+</head>
+
+<body>
+    <div th:fragment="content">
+    <h4 class="card-title">Check out what you can get with your time points </h4>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Business</th>
+                <th>Offer</th>
+                <th>Offer Description</th>
+                <th>Cost</th>
+            </tr>
+            </thead>
+            <tbody>
+        <tr th:each="offer : ${Offers}">
+            <td th:text="${offer.businessName}"></td>
+
+            <td><a th:href="@{/profile/offers/{id} (id=${offer.offer.id})}"><span th:text="${offer.offer.name}"></span></a></td>
+
+            <td th:text="${offer.offer.description}"></td>
+            <td th:text="${offer.offer.cost}"></td>
+        </tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+</body>
+</html>
+

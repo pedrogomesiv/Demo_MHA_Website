@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search for a Reward</title>
+</head>
+<body>
+<div th:fragment="content">
+    <h4 class="card-title">Search for a Reward</h4>
+    <form action="/admin/searchReward" method="get" class="forms-sample">
+        <div class="form-group">
+            <label >Enter Reward Name</label>
+            <input name="searchNameTerm" id="searchNameTerm" value="Enter search value for Reward" type="text" class="form-control">
+            <br>
+            <input type="submit" id="submit" value="Search for Reward" class="btn btn-success mr-2"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

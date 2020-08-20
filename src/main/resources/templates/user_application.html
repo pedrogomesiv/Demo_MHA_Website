@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MHA Volunteering</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/posts.js"></script>
+    <script src="/js/js-url-2.5.0/url.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Register</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+</head>
+
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+        <div class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
+            <div class="row w-100">
+                <div class="col-lg-4 mx-auto">
+                    <h2 class="text-center mb-4">Register</h2>
+                    <div class="auto-form-wrapper">
+                        <form th:action="@{/application}" method="post" class="forms-sample">
+                            <div class="form-group">
+                                <label >Name</label>
+                                <input name="fName" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label >Last Name</label>
+                                <input name="sName" type="text" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <label >Address line 1 </label>
+                                <input name="address1" type="text" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <label >Address line 2 </label>
+                                <input name="address2" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label >City </label>
+                                <input  name="city" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label >Postcode</label>
+                                <input name="postCode" type="text" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <label >Phone Number </label>
+                                <input name="phoneNumber" type="text" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <label >Emergency Number</label>
+                                <input name="emergencyNumber" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label >Email address</label>
+                                <input name="email" type="email" class="form-control"  placeholder="Email">
+                            </div>
+                            <p class="card-description">MHA Tenant</p>
+                            <div class="form-group">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input name="tenant" type="radio" class="form-check-input" value="yes"> Yes
+                                    </label>
+                                </div>
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input name="tenant" type="radio" class="form-check-input" value="no"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <p class="card-description">Have you previously volunteered for MHA or any other organisation?</p>
+
+                            <div class="form-group">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input name="volunteered" type="radio" class="form-check-input"  value="yes"> Yes
+                                    </label>
+                                </div>
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input name="volunteered" type="radio" class="form-check-input"  value="no"> No
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>if Yes, who have you volunteered for and what was your role?</label>
+                                    <input name="volunteeredRole" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <p class="card-description">Do you have any disabilities or support needs you may require help with to enable you to fully participate in this scheme? </p>
+                            <div class="form-group">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input name="disabilities" type="radio" class="form-check-input"  value="yes"> Yes
+                                    </label>
+                                </div>
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input name="disabilities" type="radio" class="form-check-input"  value="no"> No
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label >if Yes, please provide details </label>
+                                    <input name="disabilityDetails" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <p class="card-description">Do you have any medical conditions or take any medications you feel MHA would need to be aware if you became unwell whilst volunteering? </p>
+                            <div class="form-group">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input name="medications" type="radio" class="form-check-input"  value="yes" > Yes
+                                    </label>
+                                </div>
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input name="medications" type="radio" class="form-check-input"  value="no"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>if Yes, please provide details </label>
+                                <input name="medicationDetails" type="text" class="form-control">
+                            </div>
+                            <p class="card-description">Do you have any known allergies?</p>
+                            <div class="form-group">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input name="allergies" type="radio" class="form-check-input"  value="Yes"> Yes
+                                    </label>
+                                </div>
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                        <input name="allergies" type="radio" class="form-check-input"  value="no"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>if Yes, please provide details </label>
+                                <input name="allergyDetails" type="text" class="form-control">
+                            </div>
+
+                            <a href="/statement">View Time Banking Statement</a>
+                            <input type="checkbox" name="checkedStatement" value="checked">I accept the Time Banking Statement<br>
+
+                            <input type="submit" class="btn btn-success mr-2" value = "Register">
+                        </form>
+                        <div th:if="${not #lists.isEmpty(form_info)}">
+                            <div class="alert alert-danger" role="alert">
+                                <table>
+                                    <tbody>
+                                    <tr th:each="error : ${form_info}">
+                                        <td th:text="${error}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="/vendors/js/vendor.bundle.base.js"></script>
+<script src="/vendors/js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="/js/off-canvas.js"></script>
+<script src="/js/misc.js"></script>
+<!-- endinject -->
+</body>
+</html>

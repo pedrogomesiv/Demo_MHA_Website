@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MHA Volunteering</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/posts.js"></script>
+    <script src="/js/js-url-2.5.0/url.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>admin registration</title>
+    <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+</head>
+
+<body>
+    <div th:fragment="content">
+        <h4 class="card-title">Change Details</h4>
+        <form th:action="@{/profile/email_update}" method="post">
+            <div><label>Email: </label><input name="email" type="text" th:value="${user_email}" class="form-control"></div>
+            <div><label>Confirm Email: </label><input name="email2" type="text" class="form-control"></div>
+            <br>
+            <input type="submit" value="Update Email" class="btn btn-success mr-2">
+        </form>
+        <br>
+        <div th:if="${not result1bad.isEmpty()}">
+            <div class="alert alert-danger" th:text="${result1bad}"></div>
+        </div>
+
+        <div th:if="${not result1good.isEmpty()}">
+            <div class="alert alert-success" th:text="${result1good}"></div>
+        </div>
+
+        <form th:action="@{/profile/password_update}" method="post">
+            <div><label>Current Password: </label><input name="password" type="password" class="form-control"></div>
+            <div><label>New Password: </label><input name="new_password1" type="password" class="form-control"></div>
+            <div><label>Confirm Password: </label><input name="new_password2" type="password" class="form-control"></div>
+            <br>
+            <input type="submit" value="Change Password"class="btn btn-success mr-2" >
+        </form>
+        <br>
+        <div th:if="${not result2bad.isEmpty()}">
+            <div class="alert alert-danger" th:text="${result2bad}"></div>
+        </div>
+
+        <div th:if="${not result2good.isEmpty()}">
+            <div class="alert alert-success" th:text="${result2good}"></div>
+        </div>
+
+        <form th:action="@{/profile/phone_update}" method="post">
+            <div><label>Phone number: </label><input name="phone" type="text" th:value="${user_phone}" class="form-control"></div>
+            <div><label>Emergency number: </label><input name="emergencyPhone" type="text" th:value="${user_emergency_phone}" class="form-control"></div>
+            <br>
+            <input type="submit" value="Change phone numbers"class="btn btn-success mr-2" >
+        </form>
+        <br>
+        <div th:if="${not result3bad.isEmpty()}">
+            <div class="alert alert-danger" th:text="${result3bad}"></div>
+        </div>
+
+        <div th:if="${not result3good.isEmpty()}">
+            <div class="alert alert-success" th:text="${result3good}"></div>
+        </div>
+    </div>
+</body>
+</html>
+

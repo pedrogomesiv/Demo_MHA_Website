@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reward Created Successfully</title>
+</head>
+<body>
+<div th:fragment="content">
+    <h3>Reward was created Successfully:</h3>
+    <span th:text="${rwrd.name}"></span>
+    <br>
+    <span th:text="${rwrd.description}"></span>
+    <br>
+    <span th:text="${rwrd.cost}"></span>
+</div>
+</body>
+</html>

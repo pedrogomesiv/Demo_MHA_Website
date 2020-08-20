@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reward Search Results</title>
+</head>
+<body>
+<div th:fragment = "content">
+<h4 class="card-title">Your Search Results</h4>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>
+                Active?
+            </th>
+            <th>
+            </th>
+            <th>
+                Offer ID
+            </th>
+            <th>
+                Offer Name
+            </th>
+            <th>
+                Offer Description
+            </th>
+            <th>
+                Credit Cost
+            </th>
+            <th>
+                Business
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="o, iter : ${offers}">
+            <td th:text="${o.active}"></td>
+            <td>
+                <!--Referencing: https://stackoverflow.com/questions/38776883/implement-a-button-in-a-table-that-returns-data-from-the-table-using-thymeleaf-a-->
+                <form th:action="@{/admin/deleteReward/{id}(id=${o.id})}" th:method="get">
+                    <button type="submit" id="submitAccept" class="btn btn-danger">deactivate</button>
+                    <!--https://www.thymeleaf.org/doc/articles/standardurlsyntax.html-->
+                </form>
+            </td>
+            <td th:text="${o.id}"></td>
+            <td th:text="${o.name}"></td>
+            <td th:text="${o.description}"></td>
+            <td th:text="${o.cost}"></td>
+            <td th:text="${bness[iter.index]}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
+</body>
+</html>

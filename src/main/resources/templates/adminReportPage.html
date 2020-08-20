@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star Admin Free Bootstrap-4 Admin Dashboard Template</title>
+    <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+</head>
+
+<body>
+    <div th:fragment="content">
+    <h4 class="card-title">Search for a Volunteer </h4>
+    <form action="/admin/findVolunteer" method="get" class="forms-sample">
+        <div class="form-group">
+            <label >Enter Volunteers name</label>
+            <input name="searchTerm" id="searchTerm" value="Enter search value for Volunteer" type="text" class="form-control">
+            <br>
+            <input type="submit" class="btn btn-success mr-2" id="submit" value="Search for Volunteer"></input>
+        </div>
+    </form>
+    </div>
+<script src="/vendors/js/vendor.bundle.base.js"></script>
+<script src="/vendors/js/vendor.bundle.addons.js"></script>
+<script src="/js/off-canvas.js"></script>
+<script src="/js/misc.js"></script>
+</body>
+
+</html>
+
+

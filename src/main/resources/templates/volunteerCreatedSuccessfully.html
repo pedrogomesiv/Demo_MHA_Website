@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Successful Creation</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/js-url-2.5.0/url.js"></script>
+</head>
+<body>
+    <div th:fragment="content">
+        <h2>Volunteer was created successfully!
+        </h2>
+        <div>
+            <h3>Username:</h3>
+            <span th:text="${volunteer.username}"></span>
+        </div>
+        <div>
+            <a href="/admin/applicants">Back to Applicants</a>
+            <a href="/admin">Back to Admin Home</a>
+        </div>
+        <!--<div>-->
+            <!--<h3>User Volunteer Information:</h3>-->
+
+            <!--<table class="table">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                    <!--<th scope="col">Firstname</th>-->
+                    <!--<th scope="col">Surname</th>-->
+                    <!--<th scope="col">Phone</th>-->
+                    <!--<th scope="col">User ID (For Username and Email)</th>-->
+                    <!--<th scope="col">Volunteer Applicant ID (For Volunteer's Personal Information)</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr th:each="v : ${volunteer}">-->
+                    <!--<td th:text="${v.firstName}"></td>-->
+                    <!--<td th:text="${v.lastName}"></td>-->
+                    <!--<td th:text="${v.phone}"></td>-->
+                    <!--<td th:text="${v.userid}"></td>-->
+                    <!--<td th:text="${v.previous_volunteer}"></td>-->
+                    <!--<td th:text="${v.volunteeruserid}"></td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+
+        <!--</div>-->
+    </div>
+</body>
+</html>

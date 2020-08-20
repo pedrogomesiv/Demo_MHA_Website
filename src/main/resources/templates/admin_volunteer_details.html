@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MHA Volunteering</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/posts.js"></script>
+    <script src="/js/js-url-2.5.0/url.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>admin registration</title>
+    <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+</head>
+
+<body>
+    <div th:fragment="content">
+        <h4 class="card-title">Register A Volunteer</h4>
+        <form th:action="@{/admin/details/{uid}/email(uid=${user_id})}" method="post" class="forms-sample">
+            <div class="form-group"><label>Email: </label><input name="email" type="text" th:value="${user_email}" class="form-control"></div>
+            <div class="form-group"><label>Confirm Email: </label><input name="email2" type="text" class="form-control"></div>
+            <input type="submit" class="btn btn-success mr-2" value = "Update Email">
+        </form>
+        <div th:if="${not resultemailbad.isEmpty()}">
+            <div class="alert alert-danger" th:text="${resultemailbad}"></div>
+        </div>
+
+        <div th:if="${not resultemailgood.isEmpty()}">
+            <div class="alert alert-success" th:text="${resultemailgood}"></div>
+        </div>
+        <br>
+        <form th:action="@{/admin/details/{uid}(uid=${user_id})}" method="post">
+            <div class="form-group"><label>First name: </label><input name="fName" type="text" th:value="${fName}" class="form-control"></div>
+            <div class="form-group"><label>Surname: </label><input name="sName" type="text" th:value="${sName}" class="form-control"></div>
+            <div class="form-group"><label>Address line 1: </label><input name="address1" type="text" th:value="${address1}" class="form-control"></div>
+            <div class="form-group"><label>Address line 2: </label><input name="address2" type="text" th:value="${address2}" class="form-control"></div>
+            <div class="form-group"><label>City: </label><input name="city" type="text" th:value="${city}" class="form-control"></div>
+            <div class="form-group"><label>Post code: </label><input name="postCode" type="text" th:value="${postCode}" class="form-control"></div>
+            <div class="form-group"><label>Phone number: </label><input name="phoneNumber" type="text" th:value="${phone}" class="form-control"></div>
+            <div class="form-group"><label>Emergency number: </label><input name="emergencyNumber" type="text" th:value="${emergencyPhone}" class="form-control"></div>
+            <div><input name="email" type="text" hidden="hidden" value="a@a"></div>
+
+            <label>MHA Tenant: <br></label>
+            <div th:if="${tenant}" class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="tenant" type="radio" value="yes" checked="checked" class="form-check-input"> Yes <br>
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="tenant" type="radio" value="no" class="form-check-input"> No <br>
+                    </label>
+                </div>
+            </div>
+            <div th:unless="${tenant}" class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="tenant" type="radio" value="yes" class="form-check-input"> Yes <br>
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="tenant" type="radio" value="no" checked="checked" class="form-check-input"> No <br>
+                    </label>
+                </div>
+            </div>
+
+            <label>Have you previously volunteered for MHA or any other organisation?:</label> <br>
+            <div th:if="${volunteered}" class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="volunteered" type="radio" value="yes" checked="checked" class="form-check-input"> Yes <br>
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="volunteered" type="radio" value="no" class="form-check-input"> No <br>
+                    </label>
+                </div>
+            </div>
+            <div th:unless="${volunteered}" class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="volunteered" type="radio" value="yes" class="form-check-input"> Yes <br>
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="volunteered" type="radio" value="no" checked="checked" class="form-check-input"> No <br>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group"><label>If yes, who have you volunteered for and what was your role?: </label>
+                <input name="volunteeredRole" type="text" th:value="${volunteeredRole}" class="form-control"></div>
+
+            <label>Do you have any disabilities or support needs you may require help with to enable you to fully participate in this scheme? </label><br>
+            <div th:if="${disability}" class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="disabilities" type="radio" value="yes" checked="checked" class="form-check-input"> Yes <br>
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="disabilities" type="radio" value="no" class="form-check-input"> No <br>
+                    </label>
+                </div>
+            </div>
+            <div th:unless="${disability}" class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="disabilities" type="radio" value="yes" class="form-check-input"> Yes <br>
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="disabilities" type="radio" value="no" checked="checked" class="form-check-input"> No <br>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group"><label>If yes, please provide details: </label>
+                <input name="disabilityDetails" type="text" th:value="${disabilityDetails}" class="form-control"></div>
+
+            <label>Do you have any medical conditions or take any medications you feel MHA would need to be aware if you became unwell whilst volunteering? </label><br>
+            <div th:if="${medication}" class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="medications" type="radio" value="yes" checked="checked" class="form-check-input"> Yes <br>
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="medications" type="radio" value="no" class="form-check-input"> No <br>
+                    </label>
+                </div>
+            </div>
+            <div th:unless="${medication}" class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="medications" type="radio" value="yes" class="form-check-input"> Yes <br>
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="medications" type="radio" value="no" checked="checked" class="form-check-input"> No <br>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group"><label>If yes, please provide details: </label>
+                <input name="medicationDetails" type="text" th:value="${medicationDetails}" class="form-control"></div>
+
+            <label>Do you have any known allergies? </label><br>
+            <div th:if="${allergy}" class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="allergies" type="radio" value="yes" checked="checked" class="form-check-input"> Yes <br>
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="allergies" type="radio" value="no" class="form-check-input"> No <br>
+                    </label>
+                </div>
+            </div>
+            <div th:unless="${allergy}" class="form-group">
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="allergies" type="radio" value="yes" class="form-check-input"> Yes <br>
+                    </label>
+                </div>
+                <div class="form-radio">
+                    <label class="form-check-label">
+                        <input name="allergies" type="radio" value="no" checked="checked" class="form-check-input"> No <br>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group"><label>If yes, please provide details: </label>
+                <input name="allergyDetails" type="text" th:value="${allergyDetails}" class="form-control"></div>
+
+            <input type="submit" value="Change Details" class="btn btn-success mr-2">
+        </form>
+
+        <br>
+        <form th:action="@{/admin/details/removal/{uid}(uid=${user_id})}" method="get">
+            <input type="submit" value="Delete User" class="btn btn-success mr-2">
+        </form>
+
+        <div th:if="${not resultdetailsbad.isEmpty()}">
+            <div class="alert alert-danger" th:text="${resultdetailsbad}"></div>
+        </div>
+
+        <div th:if="${not resultdetailsgood.isEmpty()}">
+            <div class="alert alert-success" th:text="${resultdetailsgood}"></div>
+        </div>
+        <div th:if="${not #lists.isEmpty(form_info)}">
+            <div class="alert alert-danger" role="alert"><table>
+                <tbody>
+                <tr th:each="error : ${form_info}">
+                    <td th:text="${error}"></td>
+                </tr>
+                </tbody></table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

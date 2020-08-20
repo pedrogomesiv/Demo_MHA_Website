@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reward Statistics Page</title>
+</head>
+<body>
+    <div th:fragment="content">
+        <h2>Reward Statistics Page</h2>
+        <h3>Choose an ordering in the drop down:</h3>
+        <div>
+            <form action="/admin/rewards/statistics/populate" method="get" class="forms-sample">
+                <select onchange="this.form.submit()" name="orderingChoice" id="orderingChoice">
+                    <option th:value="${options[1]}" th:text="${options[0]}"></option>
+                    <option th:value="${options[3]}" th:text="${options[2]}"></option>
+                </select>
+            </form>
+        </div>
+
+        <div id="noRewardsYet" th:if="${#lists.isEmpty(rewardsOrdered)}">
+            <div>No rewards to order yet.</div>
+        </div>
+
+        <div id="rewardsToOrder" th:if="${not #lists.isEmpty(rewardsOrdered)}">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        Offer ID
+                    </th>
+                    <th>
+                        Offer Name
+                    </th>
+                    <th>
+                        Offer Description
+                    </th>
+                    <th>
+                        Credit Cost
+                    </th>
+                    <th>
+                        Number of Times Redeemed
+                    </th>
+                    <th>
+                        Active?
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tbody>
+                <tr th:each="rO, iter : ${rewardsOrdered}">
+                    <td th:text="${rO.id}"></td>
+                    <td th:text="${rO.name}"></td>
+                    <td th:text="${rO.description}"></td>
+                    <td th:text="${rO.cost}"></td>
+                    <td th:text="${rO.numTimesRedeemed}"></td>
+                    <td th:text="${rO.active}"></td>
+                    <!--<td th:text="${bness[iter.index]}"></td>-->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
